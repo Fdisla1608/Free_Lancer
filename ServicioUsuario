@@ -6,6 +6,7 @@
 package org.diplomado.pucmm.mescyt.java;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,13 +16,15 @@ import java.util.List;
  */
 public class ServicoUsuario {
 
-    public void Ssalvar(Usuario usuario) {
+    public void Ssalvar(Usuario usuario) throws SQLException {
         String sqlInsert = "INSERT INTO usuario (nombre,apellido,usuario,clave) VALUES (?,?,?,?)";
         try (Connection con = ConeccionDB.getInstancia().getConeccion()) {
+            try(PreparedStatement stmt = con.prepareStatement(sqlInsert)){
 
         } catch (SQLException ex) {
 
         }
+    }
     }
 
     public void modificar(Usuario usuario) {
